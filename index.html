@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d83d72">
+<meta name="description" content="HerMoveFirst — You don't chase. You choose.">
+<title>HerMoveFirst — You Don't Chase. You Choose.</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#fff8fa;color:#24171e}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{height:72px;background:#fff;border-bottom:1px solid #ead9e0;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:10}
+.logo{font-size:24px;font-weight:950;letter-spacing:-1.2px;color:#d83d72}.logo b{color:#261a20}
+nav{display:flex;gap:5px}nav button{border:0;background:transparent;padding:9px 12px;border-radius:12px;color:#75676f}nav button.active{background:#fff0f4;color:#bd2c5d;font-weight:850}
+main{width:min(1100px,92%);margin:30px auto 80px}
+.hero{text-align:center;padding:35px 0 24px}.hero h1{font-size:clamp(40px,7vw,72px);line-height:.98;letter-spacing:-4px;margin:0}.hero h1 span{color:#d83d72}.hero p{font-size:18px;color:#75676f;max-width:720px;margin:18px auto;line-height:1.6}
+.cta{border:0;border-radius:15px;padding:14px 22px;background:linear-gradient(135deg,#d83d72,#ff719e);color:white;font-weight:900;box-shadow:0 10px 25px #d83d7233}
+.pills{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:20px 0}.pill{border:1px solid #ead9e0;background:#fff;border-radius:999px;padding:9px 14px;color:#6e6068}.pill.on{background:#fff0f4;color:#bd2c5d;border-color:#f0a7be;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;border:1px solid #ead9e0;border-radius:25px;overflow:hidden;box-shadow:0 14px 45px #6e294114}.photo{height:330px;background-size:cover;background-position:center;position:relative}.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,#0009)}.status{position:absolute;bottom:14px;left:14px;z-index:2;color:#fff;background:#2cae7cdd;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850}.cardbody{padding:18px}.name{font-size:23px;font-weight:950}.age{font-weight:500;color:#75676f}.meta{color:#75676f;font-size:14px;margin-top:4px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.tag{font-size:12px;background:#faf0f4;border-radius:999px;padding:6px 9px}.actions{display:flex;gap:9px;margin-top:15px}.actions button{flex:1;border:0;border-radius:13px;padding:12px;font-weight:900}.pass{background:#f4edf0;color:#665860}.like{background:linear-gradient(135deg,#d83d72,#ff719e);color:white}
+.panel{background:#fff;border:1px solid #ead9e0;border-radius:24px;padding:25px;box-shadow:0 14px 45px #6e294110}.panel h2{margin-top:0}.notice{background:#fff0f4;border:1px solid #f2bfd0;border-radius:15px;padding:14px;color:#8a3150;margin-bottom:18px}.row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #eee1e6}.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover}.grow{flex:1}.muted{color:#75676f}.empty{text-align:center;padding:50px;color:#75676f}.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.form label{font-size:13px;font-weight:850}.form input,.form textarea,.form select{width:100%;margin-top:7px;border:1px solid #e3d5dc;border-radius:12px;padding:12px;background:white}.full{grid-column:1/-1}.featuregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{border:1px solid #ead9e0;background:#fff;padding:20px;border-radius:18px}.feature b{font-size:18px}.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px}.price{border:1px solid #ead9e0;border-radius:20px;padding:22px;background:#fff}.price.premium{border-color:#efa8bf;background:linear-gradient(145deg,#fff0f4,#fff)}.price h3{font-size:25px;margin:0}.price li{margin:9px 0}.adminstats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{border:1px solid #ead9e0;border-radius:17px;padding:17px}.stat strong{display:block;font-size:27px}
+footer{text-align:center;color:#8a7a83;padding:25px;border-top:1px solid #ead9e0;background:#fff}
+@media(max-width:800px){.grid,.featuregrid{grid-template-columns:1fr 1fr}.pricing{grid-template-columns:1fr}.adminstats{grid-template-columns:1fr 1fr}.photo{height:280px}}
+@media(max-width:560px){nav button{font-size:11px;padding:8px 5px}.logo{font-size:19px}.grid,.featuregrid,.form,.adminstats{grid-template-columns:1fr}.photo{height:360px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">HerMoveFirst <b>♥</b></div>
+<nav>
+<button class="active" data-tab="home">Home</button>
+<button data-tab="hunt">The Hunt</button>
+<button data-tab="matches">Matches</button>
+<button data-tab="messages">Messages</button>
+<button data-tab="profile">Profile</button>
+<button data-tab="premium">Premium</button>
+</nav>
+</header>
+<main id="main"></main>
+<footer>HerMoveFirst™ — You don't chase. You choose. &nbsp; | &nbsp; 18+ dating community</footer>
+
+<script>
+const men=[
+{id:1,name:"Jake",age:31,city:"Sacramento",distance:8,status:"Ready for the hunt",intent:"Long-term",bio:"Dog dad, weekend road-tripper, and hopelessly into good coffee.",tags:["Dogs","Travel","Coffee"],img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85"},
+{id:2,name:"Marcus",age:36,city:"Roseville",distance:13,status:"Getting noticed",intent:"Long-term",bio:"Builder by day, cook by night. Looking for someone genuine.",tags:["Cooking","Fitness","Family"],img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85"},
+{id:3,name:"Ethan",age:29,city:"Folsom",distance:18,status:"New to the hunt",intent:"Dating",bio:"Live music, tacos, and spontaneous plans. Let's see where it goes.",tags:["Music","Food","Outdoors"],img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85"},
+{id:4,name:"Daniel",age:42,city:"Elk Grove",distance:22,status:"Top catch",intent:"Long-term",bio:"Divorced dad with a big heart and a soft spot for old movies.",tags:["Family","Movies","BBQ"],img:"https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=85"},
+{id:5,name:"Ryan",age:34,city:"Davis",distance:27,status:"Active",intent:"Dating",bio:"Photographer, cyclist, and always planning the next adventure.",tags:["Photography","Cycling","Travel"],img:"https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=900&q=85"},
+{id:6,name:"Chris",age:39,city:"Vacaville",distance:31,status:"Waiting to be chosen",intent:"Long-term",bio:"Easygoing, loyal, and looking for a real partnership.",tags:["Hiking","Music","Family"],img:"https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=85"}
+];
+let liked=JSON.parse(localStorage.getItem("hmf_liked")||"[]");
+let passed=JSON.parse(localStorage.getItem("hmf_passed")||"[]");
+let tab="home",filter="all";
+
+function card(p){
+return `<article class="card"><div class="photo" style="background-image:url('${p.img}')"><span class="status">● ${p.status}</span></div>
+<div class="cardbody"><div class="name">${p.name} <span class="age">${p.age}</span></div>
+<div class="meta">${p.city} · ${p.distance} miles · ${p.intent}</div>
+<div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div><div>${p.bio}</div>
+<div class="actions"><button class="pass" onclick="pass(${p.id})">✕ Pass</button><button class="like" onclick="like(${p.id})">♥ Make My Move</button></div></div></article>`;
+}
+function home(){
+return `<section class="hero"><h1>You don't chase.<br><span>You choose.</span></h1>
+<p><b>HerMoveFirst</b> is the women-first dating experience where the men are in the hunt — and you decide who gets your attention.</p>
+<button class="cta" onclick="tab='hunt';render()">Enter the Hunt →</button></section>
+<div class="featuregrid"><div class="feature"><b>🎯 You choose</b><p class="muted">No pressure. Browse men and decide who deserves your first move.</p></div><div class="feature"><b>🔥 They're in the hunt</b><p class="muted">Men build their profiles, stay active and hope you pick them.</p></div><div class="feature"><b>💬 You start it</b><p class="muted">Mutual interest opens the door. Your move starts the conversation.</p></div></div>`;
+}
+function hunt(){
+let arr=men.filter(p=>!liked.includes(p.id)&&!passed.includes(p.id)&&
+(filter==="all"||(filter==="nearby"&&p.distance<=15)||(filter==="serious"&&p.intent==="Long-term")||(filter==="dating"&&p.intent==="Dating")));
+return `<section class="hero" style="padding-top:10px"><h1>Welcome to <span>the Hunt.</span></h1><p>The men are here. The choice is yours.</p></section>
+<div class="pills">${["all","nearby","serious","dating"].map(x=>`<button class="pill ${filter===x?"on":""}" onclick="filter='${x}';render()">${x==="all"?"All":x==="nearby"?"Nearby":x==="serious"?"Long-term":"Dating"}</button>`).join("")}</div>
+<div class="grid">${arr.map(card).join("")}</div>${arr.length?"":'<div class="empty"><h2>The hunt is quiet.</h2><p>Change your filter or check back for new catches.</p></div>'}`;
+}
+function matches(){
+let arr=men.filter(p=>liked.includes(p.id));
+return `<section class="panel"><h2>Your Picks</h2><p class="muted">These are the men you've chosen. In the production version, a real match appears when interest is mutual.</p>
+${arr.length?arr.map(p=>`<div class="row"><img class="avatar" src="${p.img}"><div class="grow"><b>${p.name}, ${p.age}</b><div class="muted">${p.city} · Waiting for the match</div></div><button class="cta" onclick="alert('Messaging unlocks when this pick becomes a mutual match.')">View</button></div>`).join(""):'<div class="empty">You haven't made a move yet.</div>'}</section>`;
+}
+function messages(){return `<section class="panel"><h2>Messages</h2><div class="notice"><b>Your move.</b> Messaging is designed to open after a mutual match. That keeps the first connection intentional.</div><div class="empty">Your future conversations will appear here.</div></section>`}
+function profile(){
+return `<section class="panel"><h2>Your Profile</h2><p class="muted">Make the men want to be picked.</p><div class="form">
+<label>First name<input id="n" placeholder="Your name"></label><label>Age<input id="a" type="number" min="18" placeholder="18+"></label>
+<label>City<input id="c" placeholder="City"></label><label>Looking for<select id="g"><option>Long-term relationship</option><option>Dating</option><option>Something casual</option></select></label>
+<label class="full">About me<textarea id="b" rows="5" placeholder="What makes you worth getting to know?"></textarea></label>
+<div class="full"><button class="cta" onclick="saveProfile()">Save my profile</button></div></div>
+<div class="notice" style="margin-top:20px">Safety is built into the product plan: 18+ eligibility, block/report, moderation, privacy controls and secure messaging are required before a public launch.</div></section>`;
+}
+function premium(){
+return `<section class="panel"><h2>Make Your Move — Premium</h2><p class="muted">Free gets women into the hunt. Premium gives them more control.</p>
+<div class="pricing"><div class="price"><h3>Free</h3><ul><li>Build your profile</li><li>Browse men</li><li>Like and pass</li><li>Match</li><li>Start conversations after matching</li><li>Safety tools</li></ul></div>
+<div class="price premium"><h3>Premium — $19.99/mo</h3><ul><li>See who liked you</li><li>Unlimited moves</li><li>Advanced filters</li><li>Incognito mode</li><li>Profile boosts</li><li>Rewind a pass</li><li>Priority discovery</li></ul><button class="cta" onclick="alert('Payment connection is added during production deployment.')">Get Premium</button></div></div></section>`;
+}
+function saveProfile(){localStorage.setItem("hmf_profile",JSON.stringify({name:n.value,age:a.value,city:c.value,goal:g.value,bio:b.value}));alert("Profile saved on this device.");}
+function like(id){liked.push(id);localStorage.setItem("hmf_liked",JSON.stringify(liked));render()}
+function pass(id){passed.push(id);localStorage.setItem("hmf_passed",JSON.stringify(passed));render()}
+function render(){
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+document.getElementById("main").innerHTML=tab==="home"?home():tab==="hunt"?hunt():tab==="matches"?matches():tab==="messages"?messages():tab==="profile"?profile():premium();
+}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
+render();
+</script>
+</body>
+</html>
